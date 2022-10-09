@@ -51,4 +51,56 @@ nav li a {
 nav li a:hover {
     background-color: #e3f4f8;
     border-radius: 4px;
-  }
+}
+
+footer {
+    height: 250px;
+    background-color: #D0F0F8;
+}
+
+.float-3 {
+    justify-content: center;
+    float: left;
+    width: 44%;
+    height: 210px;
+    padding: 20px;
+    padding-left: 40px;
+    border-left: 1px #c8b49c solid;
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 13px;
+}
+
+.float-3 h3 {
+    padding-left: 38px;
+    font-size: 20px;
+    color: rebeccapurple;
+}
+
+footer li {
+    list-style: none;
+    padding-bottom: 10px;
+}
+
+footer p {
+    padding: 0px 50px;
+}
+
+.img-f {
+    display: block;
+    margin: 0px auto;
+    width: 40%;
+}
+
+.img-r {
+    display: inline-block;
+    margin: 0px auto;
+    padding-left: 40px;
+}
+
+.face {
+    width: 30px
+}
+
+.insta {
+    width: 30px;
+}
