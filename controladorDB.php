@@ -9,7 +9,7 @@ class DB extends mysqli{
     protected static $instance;
 
 	public function __constructor($host,$user,$pass,$dbname,$port){
-		@parent::__constructor($host,$user,$pass,$dbname,$port);
+		@parent::__construct($host,$user,$pass,$dbname,$port);
 		if(mysqli_connect_errno()){
 			throw new Exception("error de conexion", 1);
 		}
