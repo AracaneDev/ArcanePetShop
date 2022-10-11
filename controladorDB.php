@@ -31,6 +31,25 @@ class DB extends mysqli{
 		return $row;
 		//return $this->query($consulta);
 	}
+
+	public function getUsers(){
+		$consulta = "SELECT id,email,nombre FROM usuarios;  ";
+		$res = mysqli_query(self::$instance,$consulta);
+		return $res;
+		//return $this->query($consulta);
+	}
+
+	public function crearUsuario($email, $pass, $nombre){
+		$consulta = "INSERT INTO usuarios
+		(email       ,pass,nombre) VALUES 
+		('".$email."','".$pass."','".$nombre."');
+		";
+		$res =mysqli_query(self::$instance,$consulta);
+		return $res;
+		//return $this->query($consulta);
+		
+	}
 }
+
 
 ?>

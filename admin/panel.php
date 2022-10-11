@@ -1,17 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-  <?php 
+  <?php
+  
+  require_once "../controladorDB.php";
+  $db = db::getDBConnection();
+
     session_start();
     if(isset($_SESSION['id'])== false){
       header("location: index.php?error=2");
     }
     //print("<script>console.log(".$_SESSION['email'].")</script>")
     $modulo = $_REQUEST['modulo']??'';
+    
   ?>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>Admin | ArcanePetShop</title>
+
+    <!-- DataTables -->
+    <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -119,7 +130,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./panel.php?modulo=usuarios" class="nav-link <?php echo ($modulo=="usuarios")?" active ": " "; ?> ">
+                <a href="./panel.php?modulo=usuarios" class="nav-link <?php echo ($modulo=="usuarios" || $modulo=="crearUsuario")?" active ": " "; ?> ">
                   <i class="far fa-user nav-icon"></i>
                   <p>Usuarios</p>
                 </a>
@@ -145,6 +156,19 @@
     <!-- /.sidebar -->
   </aside>
   <?php
+
+    if(isset($_REQUEST['mensaje'])){
+      ?>
+      <div class="alert alert-primary alert-dismissible fade show float-right" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          <span class="sr-only">Close</span>
+        </button>
+        <?php echo $_REQUEST['mensaje'] ?>
+      </div>
+    <?php
+    }
+
     if($modulo == 'estadisticas' || $modulo == ''){
       include_once "estadisticas.php";
     }
@@ -157,7 +181,9 @@
     if($modulo == 'ventas'){
       include_once "ventas.php";
     }    
-    
+    if($modulo == 'crearUsuario'){
+      include_once "crearUsuario.php";
+    }
   ?>
 
  
@@ -198,5 +224,40 @@
 <script src="dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard.js"></script>
+
+<!-- Bootstrap 4 -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- DataTables  & Plugins -->
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="plugins/jszip/jszip.min.js"></script>
+<script src="plugins/pdfmake/pdfmake.min.js"></script>
+<script src="plugins/pdfmake/vfs_fonts.js"></script>
+<script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+<!-- Page specific script -->
+<script>
+  $(function () {
+/*     $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)'); */
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
 </body>
 </html>
