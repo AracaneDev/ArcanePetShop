@@ -24,9 +24,12 @@ class DB extends mysqli{
 		return self::$instance;
 	}
 
-	public function getUser($name, $pass){
-		$consulta = "SELECT * FROM users WHERE user='".$name."' AND password='".$pass."'";
-		return $this->query($consulta);
+	public function getUser($email, $pass){
+		$consulta = "SELECT id,email,nombre FROM usuarios WHERE email='".$email."' AND pass='".$pass."'";
+		$res = mysqli_query(self::$instance,$consulta);
+		$row = mysqli_fetch_assoc($res);
+		return $row;
+		//return $this->query($consulta);
 	}
 }
 
