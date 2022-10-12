@@ -1,4 +1,27 @@
   
+
+<?php 
+
+if(isset($_REQUEST['idBorrar'])){
+    $id = mysqli_real_escape_string($db,$_REQUEST['idBorrar'] ?? '');
+    $res = $db->borrarUsuario($id);
+    if($res){
+      ?>
+        <div class="alert alert-warning float-right" role="alert">
+            Usuario borrado con exito.
+        </div>
+      <?php
+    }else{
+      ?>
+      <div class="alert alert-danger float-right" role="alert">
+          Error al borrar <?php echo mysqli_error($db); ?>
+      </div>
+    <?php
+    }
+  }
+
+?>
+
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -39,8 +62,8 @@
                                 <td><?php echo $user['nombre'] ?></td>
                                 <td><?php echo $user['email'] ?></td>
                                 <td>
-                                    <a href="editarUsuario.php?id=<?php echo $user['id'] ?>" style="margin-right: 100px;"><i class="fas fa-edit"></i></a>
-                                    <a href="usuarios.php?idBorar=<?php echo $user['id'] ?>" class="text-danger"><i class="fas fa-trash"></i></a>
+                                    <a href="panel.php?modulo=editarUsuario&id=<?php echo $user['id'] ?>" style="margin-right: 100px;"><i class="fas fa-edit"></i></a>
+                                    <a href="panel.php?modulo=usuarios&idBorrar=<?php echo $user['id'] ?>" class="text-danger borrar"><i class="fas fa-trash"></i></a>
                                 </td>
                             </tr>
                         <?php

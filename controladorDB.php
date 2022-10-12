@@ -39,6 +39,13 @@ class DB extends mysqli{
 		//return $this->query($consulta);
 	}
 
+	public function buscarUsuario($id){
+		$consulta = "SELECT id,email,pass,nombre FROM usuarios WHERE id='".$id."'; ";
+		$res = mysqli_query(self::$instance,$consulta);
+		$row = mysqli_fetch_assoc($res);
+		return $row;
+	}
+
 	public function crearUsuario($email, $pass, $nombre){
 		$consulta = "INSERT INTO usuarios
 		(email       ,pass,nombre) VALUES 
@@ -47,7 +54,29 @@ class DB extends mysqli{
 		$res =mysqli_query(self::$instance,$consulta);
 		return $res;
 		//return $this->query($consulta);
-		
+	}
+
+	public function actualizarUsuario($email, $pass, $nombre, $id){
+/* 		$consulta = "UPDATE usuarios SET"
+			."nombre='".$name."',"
+			."descripcion='".$desc."',"
+			."precio='".$precio."',"
+			."imagen='".$imagen."'"
+		."WHERE nombre='".$producto."'";
+		print($consulta);
+		return $this->query($consulta); */
+		$consulta = "UPDATE usuarios SET
+		email='".$email."',pass='".$pass."',nombre='".$nombre."'
+		WHERE id='".$id."';
+		";
+		$res =mysqli_query(self::$instance,$consulta);
+		return $res;
+	}
+
+	public function borrarUsuario($id){
+		$consulta = "DELETE FROM usuarios WHERE id='".$id."';";
+		$res =mysqli_query(self::$instance,$consulta);
+		return $res;
 	}
 }
 

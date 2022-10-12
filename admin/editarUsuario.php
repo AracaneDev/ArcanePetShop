@@ -5,10 +5,11 @@
         $email = mysqli_real_escape_string($db,$_REQUEST['email'] ??' ');
         $pass = mysqli_real_escape_string($db,$_REQUEST['pass'] ?? '');
         $nombre = mysqli_real_escape_string($db,$_REQUEST['nombre'] ?? '');
+        $id = mysqli_real_escape_string($db,$_REQUEST['id'] ?? '');
 
-        $respuesta = $db->crearUsuario($email,$pass,$nombre);
+        $respuesta = $db->actualizarUsuario($email,$pass,$nombre,$id);
         if($respuesta){
-            echo '<meta http-equiv="refresh" content="0; url=panel.php?modulo=usuarios&mensaje=Usuario creado exitosamente" />  ';
+            echo '<meta http-equiv="refresh" content="0; url=panel.php?modulo=usuarios&mensaje=Usuario '.$nombre.' editado exitosamente" />  ';
         }else{
             ?>
                 <div class="alert alert-danger" role="alert">
@@ -17,6 +18,8 @@
             <?php 
             }
         }
+        $id = mysqli_real_escape_string($db,$_REQUEST['id']??'');
+        $user = $db->buscarUsuario($id);
     ?>
 
 
@@ -41,20 +44,21 @@
             <div class="card">
               <!-- /.card-header -->
               <div class="card-body">
-                    <form action="panel.php?modulo=crearUsuario" method="post">
+                    <form action="panel.php?modulo=editarUsuario" method="post">
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="email" name="email" class="form-control" required="Requerido">
+                            <input type="email" name="email" class="form-control" value="<?php echo $user['email'] ?>" required="Requerido">
                         </div>
                         <div class="form-group">
                             <label>Contraseña</label>
-                            <input type="password" name="pass" class="form-control" required="Requerido">
+                            <input type="password" name="pass" class="form-control" value="<?php echo $user['pass'] ?>" required="Requerdio">
                         </div>
                         <div class="form-group">
                             <label>Nombre</label>
-                            <input type="text" name="nombre" class="form-control" required="Requerido">
+                            <input type="text" name="nombre" class="form-control" value="<?php echo $user['nombre'] ?>" required="Requerido">
                         </div>
                         <div class="form-group">
+                            <input type="hidden" name="id" value="<?php echo $user['id'] ?>">
                             <button type="submit" class="btn btn-primary" name="guardar">Guardar</button>
                         </div>
                     </form>
