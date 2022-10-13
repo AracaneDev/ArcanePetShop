@@ -6,6 +6,11 @@
   $db = db::getDBConnection();
 
     session_start();
+    session_regenerate_id(true);
+    if(isset($_REQUEST['sesion']) && $_REQUEST['sesion']=='cerrar'){
+      session_destroy();
+      header("location: index.php");
+    }
     if(isset($_SESSION['id'])== false){
       header("location: index.php?error=2");
     }
@@ -20,9 +25,15 @@
   <title>Admin | ArcanePetShop</title>
 
     <!-- DataTables -->
-    <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <!-- <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-  <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css"> -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/select/1.4.0/css/select.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/datetime/1.1.2/css/dataTables.dateTime.min.css">
+  <link rel="stylesheet" href="css/editor.dataTables.min.css">
+
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -70,8 +81,11 @@
 
       <!-- Messages Dropdown Menu -->
 
-        <a class="nav-link" href="panel.php?modulo=editarUsuario&id=<?php echo $_SESSION['id']; ?> ">
+        <a class="nav-link" href="panel.php?modulo=editarUsuario&id=<?php echo $_SESSION['id']; ?> " title="Editar mi usuario">
           <i class="far fa-user"></i>
+        </a>
+        <a class="nav-link text-danger" href="panel.php?modulo=&sesion=cerrar" title="Cerrar Sesion">
+          <i class="fas fa-door-closed"></i>
         </a>
     </ul>
   </nav>
@@ -187,6 +201,9 @@
     if($modulo == 'editarUsuario'){
       include_once "editarUsuario.php";
     }
+    if($modulo == 'productos'){
+      include_once "productos.php";
+    }
   ?>
 
  
@@ -231,7 +248,7 @@
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- DataTables  & Plugins -->
-<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<!-- <script src="plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
@@ -243,6 +260,12 @@
 <script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+ -->
+ <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+ <script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
+ <script src="https://cdn.datatables.net/select/1.4.0/js/dataTables.select.min.js"></script>
+ <script src="https://cdn.datatables.net/datetime/1.1.2/js/dataTables.dateTime.min.js"></script>
+ <script src="js/dataTables.editor.min.js"></script>
 
 <!-- Page specific script -->
 <script>
@@ -260,6 +283,55 @@
       "autoWidth": false,
       "responsive": true,
     });
+
+    editor = new $.fn.dataTable.Editor( {
+        ajax: "controllers/productos.php",
+        table: "#tablaProductos",
+        fields: [ {
+                label: "Nombre:",
+                name: "nombre"
+            }, {
+                label: "Precio:",
+                name: "precio"
+            }, {
+                label: "Existencia:",
+                name: "existencia"
+            },{
+                label: "Imagenes:",
+                name: "files[].id",
+                type: "uploadMany",
+                display: function ( fileId, counter ) {
+                    return '<img src="'+editor.file( 'files', fileId ).web_path+'"/>';
+                },
+                noFileText: 'No hay imagenes'
+            }
+        ]
+    } );
+ 
+    $('#tablaProductos').DataTable( {
+        dom: "Bfrtip",
+        ajax: "controllers/productos.php",
+        columns: [
+            { data: "nombre" },
+            { data: "precio", render: $.fn.dataTable.render.number( ',', '.', 0, '$' ) },
+            { data: "existencia" },
+            {
+                data: "files",
+                render: function ( d ) {
+                    return d.length ?
+                        d.length+' imagenes' :
+                        'No hay imagenes';
+                },
+                title: "Imagen"
+            }
+        ],
+        select: true,
+        buttons: [
+            { extend: "create", editor: editor },
+            { extend: "edit",   editor: editor },
+            { extend: "remove", editor: editor }
+        ]
+    } );
   });
 </script>
   <script>

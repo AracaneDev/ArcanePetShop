@@ -78,6 +78,14 @@ class DB extends mysqli{
 		$res =mysqli_query(self::$instance,$consulta);
 		return $res;
 	}
+
+	public function getProductos(){
+		$consulta = "SELECT id,nombre,precio,existencia FROM productos;  ";
+		$res = mysqli_query(self::$instance,$consulta);
+		return $res;
+		//return $this->query($consulta);
+	}
+
 }
 
 
