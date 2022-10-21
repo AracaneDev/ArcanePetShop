@@ -79,12 +79,34 @@ class DB extends mysqli{
 		return $res;
 	}
 
-	public function getProductos(){
-		$consulta = "SELECT id,nombre,precio,existencia FROM productos;  ";
+	public function getProductos($where,$limite){
+		$consulta = "SELECT 
+		p.id,
+		p.nombre,
+		p.precio,
+		p.existencia,
+		f.web_path
+		FROM
+		productos AS p
+		INNER JOIN productos_files AS pf ON  pf.producto_id = p.id
+		INNER JOIN files AS f ON f.id = pf.file_id
+		$where
+		GROUP BY p.id
+		$limite
+		";
 		$res = mysqli_query(self::$instance,$consulta);
 		return $res;
 		//return $this->query($consulta);
 	}
+
+	public function totalProductos($where){
+		$consulta = "SELECT COUNT(*) as cuenta FROM	productos $where ;";
+		$res = mysqli_query(self::$instance,$consulta);
+		$row = mysqli_fetch_assoc($res);
+		return $row['cuenta'];
+	}
+
+
 
 }
 
