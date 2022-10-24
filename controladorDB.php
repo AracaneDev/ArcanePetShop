@@ -88,8 +88,8 @@ class DB extends mysqli{
 		f.web_path
 		FROM
 		productos AS p
-		INNER JOIN productos_files AS pf ON  pf.producto_id = p.id
-		INNER JOIN files AS f ON f.id = pf.file_id
+		INNER JOIN productos_files AS pf ON pf.producto_id=p.id
+		INNER JOIN files AS f ON f.id=pf.file_id
 		$where
 		GROUP BY p.id
 		$limite
@@ -99,12 +99,35 @@ class DB extends mysqli{
 		//return $this->query($consulta);
 	}
 
-	public function totalProductos($where){
-		$consulta = "SELECT COUNT(*) as cuenta FROM	productos $where ;";
+	public function totalProductos($where1){
+		$consulta =  'SELECT COUNT(*) as cuenta FROM productos  $where1 ;';
 		$res = mysqli_query(self::$instance,$consulta);
 		$row = mysqli_fetch_assoc($res);
 		return $row['cuenta'];
 	}
+
+	public function detalleProducto($id){
+		$consulta = "SELECT id,nombre,precio,existencia FROM productos WHERE id='$id';";
+		$res = mysqli_query(self::$instance,$consulta);
+		$row = mysqli_fetch_assoc($res);
+		return $row;
+	}
+
+	public function detalleProductoImg($id){
+		$consulta = "SELECT 
+					f.web_path
+					FROM
+					productos AS p
+					INNER JOIN productos_files AS pf ON pf.producto_id=p.id
+					INNER JOIN files AS f ON f.id=pf.file_id
+					WHERE p.id='$id';
+					";
+		$res = mysqli_query(self::$instance,$consulta);
+		//$row = mysqli_fetch_assoc($res);
+		return $res;
+	}
+
+
 
 
 
