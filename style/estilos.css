@@ -1,0 +1,48 @@
+* {
+  font-family: "Inter Tight", sans-serif;
+}
+
+.bg-nav {
+  background-image: url("../img/PngItem_6063572.png");
+  background-repeat:repeat-x;
+}
+
+.justify {
+    text-align: justify;
+}
+
+u {
+  color: rgb(177, 128, 223);
+}
+
+.px-9 {
+  padding-left: 20%;
+  padding-right: 20%
+}
+
+.col-md-6 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tam {
+    width: 30% !important;
+}
+
+.mision {
+    padding: 5px 10px;
+    background-color: rgb(177, 128, 223);
+    text-align: center;
+}
+
+.vision {
+    padding: 5px 10px;
+    text-align: center;
+    background-color: rgb(223, 128, 199);
+}
+
+.bg-beige {
+    background-color: #c8b49c;
+}
+
