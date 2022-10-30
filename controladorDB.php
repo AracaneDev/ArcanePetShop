@@ -85,6 +85,7 @@ class DB extends mysqli{
 		p.nombre,
 		p.precio,
 		p.existencia,
+		p.Descripción,
 		f.web_path
 		FROM
 		productos AS p
@@ -107,7 +108,7 @@ class DB extends mysqli{
 	}
 
 	public function detalleProducto($id){
-		$consulta = "SELECT id,nombre,precio,existencia FROM productos WHERE id='$id';";
+		$consulta = "SELECT id,nombre,precio,existencia,Descripción FROM productos WHERE id='$id';";
 		$res = mysqli_query(self::$instance,$consulta);
 		$row = mysqli_fetch_assoc($res);
 		return $row;
@@ -126,10 +127,6 @@ class DB extends mysqli{
 		//$row = mysqli_fetch_assoc($res);
 		return $res;
 	}
-
-
-
-
 
 }
 
