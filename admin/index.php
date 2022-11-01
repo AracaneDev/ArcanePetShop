@@ -12,7 +12,7 @@
             <div class="login_box">
                 <div class="left">
                     <div class="top_link">
-                        <a href="../index.html"
+                        <a href="../index.php"
                             ><img src="../img/left.svg" alt="" />Volver a la
                             tienda</a
                         >
