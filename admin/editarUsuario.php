@@ -18,8 +18,8 @@
             <?php 
             }
         }
-        $id = mysqli_real_escape_string($db,$_REQUEST['id']??'');
-        $user = $db->buscarUsuario($id);
+      $id = mysqli_real_escape_string($db,$_REQUEST['id']??'');
+      $user = $db->buscarUsuario($id);
     ?>
 
 

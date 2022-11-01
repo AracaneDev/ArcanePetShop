@@ -14,7 +14,7 @@ $detalleProducto = $db->detalleProducto($id);
                     <h3 class="d-inline-block d-sm-none"><?php echo $detalleProducto['nombre'] ?></h3>
                     <?php
                     $detalleProductoImgP = $db->detalleProductoImg($id);
-                    $imgP = mysqli_fetch_assoc($detalleProductoImgP)
+                    $imgP = mysqli_fetch_assoc($detalleProductoImgP);
                     ?>
                     <div class="col-12">
                         <img src="<?php echo $imgP['web_path'] ?>" class="product-image" alt="Product Image" id="primerImagen">
