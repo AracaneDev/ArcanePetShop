@@ -1,8 +1,6 @@
 <?php
 $id = mysqli_real_escape_string($db, $_REQUEST['id'] ?? '');
 $detalleProducto = $db->detalleProducto($id);
-
-
 ?>
 
 <!-- Default box -->
@@ -47,75 +45,82 @@ $detalleProducto = $db->detalleProducto($id);
                         </h4> -->
                     </div>
 
-                    <div class="mt-4">
-                        <div class="btn btn-primary btn-lg btn-flat">
-                            <i class="fas fa-cart-plus fa-lg mr-2"></i>
-                            Add to Cart
-                        </div>
+                    <div class="center mt-5">
+                        <div class="card pt-3">
+                            <div class="container-fluid p-2" style="background-color: ghostwhite;">
 
-                    </div>
-
-                </div>
-            </div>
-            <div class="row mt-4">
-                <nav class="w-100">
-                    <div class="nav nav-tabs" id="product-tab" role="tablist">
-                        <a class="nav-item nav-link active" id="product-desc-tab" data-toggle="tab" href="#product-desc" role="tab" aria-controls="product-desc" aria-selected="true">Description</a>
-                        <a class="nav-item nav-link" id="product-comments-tab" data-toggle="tab" href="#product-comments" role="tab" aria-controls="product-comments" aria-selected="false">Comments</a>
-                    </div>
-                </nav>
-                <div class="tab-content p-3" id="nav-tabContent">
-                    <div class="tab-pane fade show active" id="product-desc" role="tabpanel" aria-labelledby="product-desc-tab"><?php echo $detalleProducto['Descripción'] ?></div>
-                    <div class="tab-pane fade" id="product-comments" role="tabpanel" aria-labelledby="product-comments-tab">
-                        <nav class="navbar navbar-light navbar-expand-md">
-
-                        </nav>
-
-
-                        <div class="container">
-
-
-
-                            <div class="col-md-6 pane">
-                                <div class="col-md-4">
-                                    <div class="alert alert-light"></div>
-                                </div>
-                                <div id="result">
-
-
-
-
-                                </div>
-
-                                <div class="col-md-8">
-                                    <form>
-                                        <div class="form-group">
-                                            <label>Nombre</label>
-                                            <input class="form-control" type="text" id="name">
+                                <form id="formulario" name="formulario" method="post" action="cart.php">
+                                    <div class="blog-post ">
+                                        <div class="text-content">
+                                            <input name="nombre" type="hidden" id="nombre" value="<?php echo $detalleProducto["nombre"]; ?>" />
+                                            <input name="precio" type="hidden" id="precio" value="<?php echo $detalleProducto["precio"]; ?>" />
+                                            <input name="cantidad" type="hidden" id="cantidad" value="1" class="pl-2" />
+                                            <div class="card-body">
+                                                <button class="btn btn-primary" type="submit"><i class="fas fa-shopping-cart"></i> Añadir al carrito</button>
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label>Comentario</label>
-                                            <textarea id="comment" class="form-control"></textarea></label>
-                                        </div>
-                                        <button type="button" class="btn btn-primary" onclick="commentBox();">Enviar</button>
-                                    </form>
-                                </div>
+                                    </div>
+                                </form>
                             </div>
-                            <div class="tab-pane fade" id="product-rating" role="tabpanel" aria-labelledby="product-rating-tab"> Cras ut ipsum ornare, aliquam ipsum non, posuere elit. In hac habitasse platea dictumst. Aenean elementum leo augue, id fermentum risus efficitur vel. Nulla iaculis malesuada scelerisque. Praesent vel ipsum felis. Ut molestie, purus aliquam placerat sollicitudin, mi ligula euismod neque, non bibendum nibh neque et erat. Etiam dignissim aliquam ligula, aliquet feugiat nibh rhoncus ut. Aliquam efficitur lacinia lacinia. Morbi ac molestie lectus, vitae hendrerit nisl. Nullam metus odio, malesuada in vehicula at, consectetur nec justo. Quisque suscipit odio velit, at accumsan urna vestibulum a. Proin dictum, urna ut varius consectetur, sapien justo porta lectus, at mollis nisi orci et nulla. Donec pellentesque tortor vel nisl commodo ullamcorper. Donec varius massa at semper posuere. Integer finibus orci vitae vehicula placerat. </div>
                         </div>
                     </div>
+
                 </div>
-                <!-- /.card-body -->
+
+            </div>
+
+        </div>
+    </div>
+    <div class="row mt-4">
+        <nav class="w-100">
+            <div class="nav nav-tabs" id="product-tab" role="tablist">
+                <a class="nav-item nav-link active" id="product-desc-tab" data-toggle="tab" href="#product-desc" role="tab" aria-controls="product-desc" aria-selected="true">Description</a>
+                <a class="nav-item nav-link" id="product-comments-tab" data-toggle="tab" href="#product-comments" role="tab" aria-controls="product-comments" aria-selected="false">Comments</a>
+            </div>
+        </nav>
+        <div class="tab-content p-3" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="product-desc" role="tabpanel" aria-labelledby="product-desc-tab"><?php echo $detalleProducto['Descripción'] ?></div>
+            <div class="tab-pane fade" id="product-comments" role="tabpanel" aria-labelledby="product-comments-tab">
+                <nav class="navbar navbar-light navbar-expand-md">
+
+                </nav>
+                <div class="container">
+                    <div class="col-md-6 pane">
+                        <div class="col-md-4">
+                            <div class="alert alert-light"></div>
+                        </div>
+                        <div id="result">
+                        </div>
+
+                        <div class="col-md-8">
+                            <form>
+                                <div class="form-group">
+                                    <label>Nombre</label>
+                                    <input class="form-control" type="text" id="name">
+                                </div>
+                                <div class="form-group">
+                                    <label>Comentario</label>
+                                    <textarea id="comment" class="form-control"></textarea></label>
+                                </div>
+                                <button type="button" class="btn btn-primary" onclick="commentBox();">Enviar</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="product-rating" role="tabpanel" aria-labelledby="product-rating-tab"> </div>
+                </div>
             </div>
         </div>
+        <!-- /.card-body -->
+    </div>
+</div>
 
-        <script type="text/javascript">
-            function changeImage(x) {
-                document.getElementById('primerImagen').src = x.src;
-            }
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript">
+    function changeImage(x) {
+        document.getElementById('primerImagen').src = x.src;
+    }
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 
-        <script src="assets/js/script.js"></script>
-        <!-- /.card -->
+<script src="assets/js/script.js"></script>
+<!-- /.card -->

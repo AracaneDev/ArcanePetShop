@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    include("./admin/conexion.php")
+?>
 <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-nav">
             <div class="container">
@@ -21,6 +25,10 @@
                         <a class="nav-link active" href="./admin/index.php">Login</a>
                     </li>
                 </ul>
+                <?php 
+            include("./nav_cart.php");
+            include("./modal_cart.php");
+        ?>
                 <form class="form-inline ml-3" action="./productos.php?modulo=productos">
                     <div class="input-group input-group-sm">
                         <input class="form-control form-control-navbar bg-light" type="search" placeholder="Buscar" aria-label="Search" name="nombre" value="<?php echo $_REQUEST['nombre'] ?? '' ?>">
