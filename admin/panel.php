@@ -60,9 +60,9 @@
 <div class="wrapper">
 
   <!-- Preloader -->
-  <div class="preloader flex-column justify-content-center align-items-center">
+<!--   <div class="preloader flex-column justify-content-center align-items-center">
     <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
-  </div>
+  </div> -->
 
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -204,6 +204,12 @@
     if($modulo == 'productos'){
       include_once "productos.php";
     }
+    if($modulo == 'crearProducto'){
+      include_once "crearProducto.php";
+    }
+    if($modulo == 'editarProducto'){
+      include_once "editarProducto.php";
+    }
   ?>
 
  
@@ -284,54 +290,16 @@
       "responsive": true,
     });
 
-    editor = new $.fn.dataTable.Editor( {
-        ajax: "controllers/productos.php",
-        table: "#tablaProductos",
-        fields: [ {
-                label: "Nombre:",
-                name: "nombre"
-            }, {
-                label: "Precio:",
-                name: "precio"
-            }, {
-                label: "Existencia:",
-                name: "existencia"
-            },{
-                label: "Imagenes:",
-                name: "files[].id",
-                type: "uploadMany",
-                display: function ( fileId, counter ) {
-                    return '<img src="'+editor.file( 'files', fileId ).web_path+'"/>';
-                },
-                noFileText: 'No hay imagenes'
-            }
-        ]
-    } );
- 
-    $('#tablaProductos').DataTable( {
-        dom: "Bfrtip",
-        ajax: "controllers/productos.php",
-        columns: [
-            { data: "nombre" },
-            { data: "precio", render: $.fn.dataTable.render.number( ',', '.', 0, '$' ) },
-            { data: "existencia" },
-            {
-                data: "files",
-                render: function ( d ) {
-                    return d.length ?
-                        d.length+' imagenes' :
-                        'No hay imagenes';
-                },
-                title: "Imagen"
-            }
-        ],
-        select: true,
-        buttons: [
-            { extend: "create", editor: editor },
-            { extend: "edit",   editor: editor },
-            { extend: "remove", editor: editor }
-        ]
-    } );
+    $('#tablaProductos').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+
   });
 </script>
   <script>
@@ -339,6 +307,19 @@
       $(".borrar").click(function (e){
         e.preventDefault();
         var res=confirm("Deseas borrar el usuario?");
+        if(res == true){
+          var link=$(this).attr("href");
+          window.location=link;
+        }
+      });
+    });
+  </script>
+
+<script>
+    $(document).ready(function (){
+      $(".borrarP").click(function (e){
+        e.preventDefault();
+        var res=confirm("Deseas borrar el producto?");
         if(res == true){
           var link=$(this).attr("href");
           window.location=link;
