@@ -8,8 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="stylesheet" href="admin/plugins/fontawesome-free/css/all.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="./style/estilos.css"/>
-    <link rel="stylesheet" href="./style/continuar.css"/>
+    <link rel="stylesheet" href="./style/estilos.css" />
+    <link rel="stylesheet" href="./style/continuar.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700&display=swap" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Arcane Pet Shop</title>
@@ -117,10 +117,10 @@
             </div>
         </div>
 
-        <a type="button" class="btn btn-success my-4" href="./continuar.php">Continuar pedido</a>
+        <a type="button" class="btn btn-success my-4" href="./pago.php">Continuar pedido</a>
 
     </div>
-    </div>
+
     <?php @include 'footer.php'; ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>

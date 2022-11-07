@@ -50,6 +50,7 @@
     <script src="admin/dist/js/adminlte.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="admin/dist/js/pages/dashboard.js"></script>
+    <?php @include 'footer.php'; ?>
 </body>
 
 </html>

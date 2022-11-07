@@ -128,6 +128,16 @@ class DB extends mysqli{
 		return $res;
 	}
 
+	public function detalles_user($nombre, $apellido, $direccion, $telefono){
+		$consulta = "INSERT INTO detalles_cliente
+		(nombre,apellido,direccion,telefono) VALUES 
+		('".$nombre."','".$apellido."','".$direccion."','".$telefono."');
+		";
+		$res =mysqli_query(self::$instance,$consulta);
+		return $res;
+		//return $this->query($consulta);
+	}
+
 }
 
 
