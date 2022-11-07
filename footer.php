@@ -1,3 +1,9 @@
+<style>
+  footer a {
+    text-decoration:none;
+}
+</style>
+
 <footer class="bg-beige text-center text-lg-start text-dark">
     <!-- Grid container -->
     <div class="container p-4">
@@ -13,24 +19,6 @@
           <p class="text-center">En Arcane Pet Shop buscamos ofrecer los mejores productos llenos de
             calidad y amor para nuestros amigos peludos.</p>
 
-          <ul class="list-unstyled d-flex flex-row justify-content-center">
-            <li>
-              <a class="text-dark px-2" href="#!">
-                <i class="fa fa-facebook-square"></i>
-              </a>
-            </li>
-            <li>
-              <a class="text-dark px-2" href="#!">
-                <i class="fa fa-instagram"></i>
-              </a>
-            </li>
-            <li>
-              <a class="text-dark ps-2" href="#!">
-                <i class="fa fa-youtube"></i>
-              </a>
-            </li>
-          </ul>
-
         </div>
         <!--Grid column-->
 
@@ -40,7 +28,7 @@
 
           <ul class="list-unstyled">
             <li class="mb-2">
-              <a href="#!" class="text-dark"><i class="fa fa-paw pe-3"></i>Productos de Aseo</a>
+              <a href="#!" class="text-dark"><i class="fa fa-paw pe-3 text-dark"></i>Productos de Aseo</a>
             </li>
             <li class="mb-2">
               <a href="#!" class="text-dark"><i class="fa fa-paw pe-3"></i>Ropa</a>
@@ -49,13 +37,7 @@
               <a href="#!" class="text-dark"><i class="fa fa-paw pe-3"></i>Medicamentos</a>
             </li>
             <li class="mb-2">
-              <a href="#!" class="text-dark"><i class="fa fa-paw pe-3"></i>Desparacitantes</a>
-            </li>
-            <li class="mb-2">
               <a href="#!" class="text-dark"><i class="fa fa-paw pe-3"></i>Alimento</a>
-            </li>
-            <li class="mb-2">
-              <a href="#!" class="text-dark"><i class="fa fa-paw pe-3"></i>Golosinas</a>
             </li>
             <li class="mb-2">
               <a href="#!" class="text-dark"><i class="fa fa-paw pe-3"></i>Juguetes y demás accesorios</a>
@@ -94,7 +76,7 @@
 
           <ul class="list-unstyled">
             <li>
-              <p><i class="fa fa-map-marker-alt pe-2"></i>Carrera 99 # 45 - 26, Medellin</p>
+              <p><i class="fas fa-map-marker-alt pe-2"></i>Carrera 99 # 45 - 26, Medellin</p>
             </li>
             <li>
               <p><i class="fa fa-phone pe-2"></i>+ 57 234 567 89</p>

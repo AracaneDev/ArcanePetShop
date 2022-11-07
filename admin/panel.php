@@ -138,12 +138,6 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./panel.php?modulo=estadisticas" class="nav-link<?php echo ($modulo=="estadisticas" || $modulo=="")?" active ": " "; ?>">
-                  <i class="far fa-chart-bar nav-icon"></i>
-                  <p>Estadisticas</p>
-                </a>
-              </li>
-              <li class="nav-item">
                 <a href="./panel.php?modulo=usuarios" class="nav-link <?php echo ($modulo=="usuarios" || $modulo=="crearUsuario" || $modulo=="editarUsuario")?" active ": " "; ?> ">
                   <i class="far fa-user nav-icon"></i>
                   <p>Usuarios</p>
@@ -153,12 +147,6 @@
                 <a href="./panel.php?modulo=productos" class="nav-link <?php echo ($modulo=="productos")?" active ": " "; ?> ">
                   <i class="fa fa-shopping-bag nav-icon"></i>
                   <p>Productos</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./panel.php?modulo=ventas" class="nav-link <?php echo ($modulo=="ventas")?" active ": " "; ?>">
-                  <i class="fa fa-table nav-icon"></i>
-                  <p>Ventas</p>
                 </a>
               </li>
             </ul>
@@ -183,18 +171,13 @@
     <?php
     }
 
-    if($modulo == 'estadisticas' || $modulo == ''){
-      include_once "estadisticas.php";
-    }
-    if($modulo == 'usuarios'){
+
+    if($modulo == 'usuarios' || $modulo == ''){
       include_once "usuarios.php";
     }
     if($modulo == 'productos'){
       include_once "productos.php";
-    }
-    if($modulo == 'ventas'){
-      include_once "ventas.php";
-    }    
+    }  
     if($modulo == 'crearUsuario'){
       include_once "crearUsuario.php";
     }
