@@ -37,18 +37,12 @@
     <div class="clear"></div>
 
     <?php @include '.php'; ?>
-    <!-- jQuery -->
     <script src="admin/plugins/jquery/jquery.min.js"></script>
-    <!-- jQuery UI 1.11.4 -->
     <script src="admin/plugins/jquery-ui/jquery-ui.min.js"></script>
-    <!-- Bootstrap 4 -->
     <script src="admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- daterangepicker -->
     <script src="admin/plugins/moment/moment.min.js"></script>
     <script src="admin/plugins/daterangepicker/daterangepicker.js"></script>
-    <!-- AdminLTE App -->
     <script src="admin/dist/js/adminlte.js"></script>
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="admin/dist/js/pages/dashboard.js"></script>
     <?php @include 'footer.php'; ?>
 </body>

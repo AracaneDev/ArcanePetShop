@@ -3,7 +3,6 @@ $id = mysqli_real_escape_string($db, $_REQUEST['id'] ?? '');
 $detalleProducto = $db->detalleProducto($id);
 ?>
 
-<!-- Default box -->
 <div class="container">
     <div class="card card-solid">
         <div class="card-body">

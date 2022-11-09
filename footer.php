@@ -5,11 +5,8 @@
 </style>
 
 <footer class="bg-beige text-center text-lg-start text-dark">
-    <!-- Grid container -->
     <div class="container p-4">
-      <!--Grid row-->
       <div class="row my-4">
-        <!--Grid column-->
         <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
 
           <div class="rounded-circle bg-white shadow-1-strong d-flex align-items-center justify-content-center mb-4 mx-auto" style="width: 150px; height: 150px;">
@@ -20,9 +17,7 @@
             calidad y amor para nuestros amigos peludos.</p>
 
         </div>
-        <!--Grid column-->
 
-        <!--Grid column-->
         <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
           <h5 class="text-uppercase mb-4">Tenemos</h5>
 
@@ -44,9 +39,7 @@
             </li>
           </ul>
         </div>
-        <!--Grid column-->
 
-        <!--Grid column-->
         <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
           <h5 class="text-uppercase mb-4">Acerca de nosotros</h5>
 
@@ -68,9 +61,7 @@
             </li>
           </ul>
         </div>
-        <!--Grid column-->
 
-        <!--Grid column-->
         <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
           <h5 class="text-uppercase mb-4">Contacto</h5>
 
@@ -86,15 +77,10 @@
             </li>
           </ul>
         </div>
-        <!--Grid column-->
       </div>
-      <!--Grid row-->
     </div>
-    <!-- Grid container -->
 
-    <!-- Copyright -->
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
       © 2022 Arcane Pet Shop
     </div>
-    <!-- Copyright -->
   </footer>

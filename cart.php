@@ -1,7 +1,5 @@
 <?php session_start();
 
-
-//aqui empieza el carrito
 if(isset($_SESSION['carrito']) || isset($_POST['nombre'])){
 	if(isset($_SESSION['carrito'])){
 		$carrito_mio=$_SESSION['carrito'];
@@ -13,8 +11,6 @@ if(isset($_SESSION['carrito']) || isset($_POST['nombre'])){
 			$donde=-1;
 			for($i=0;$i<=count($carrito_mio)-1;$i ++){
 			   if($ref==$carrito_mio[$i]['nombre']){
-			   	  //Quitamos esta linea para que no aumente la cantidad y genere una linea nueva
-			   //	$donde=$i;
 			   }
 			}
 			if($donde != -1){
@@ -44,12 +40,9 @@ if(isset($_SESSION['carrito']) || isset($_POST['nombre'])){
 		$id=$_POST['id2'];
 		$carrito_mio[$id]=NULL;
 	}
-	
-
 
 $_SESSION['carrito']=$carrito_mio;
 }
-//aqui termina el carrito
 
 if(isset($_SESSION['carrito'])){
 

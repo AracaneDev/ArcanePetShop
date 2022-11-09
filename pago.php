@@ -39,7 +39,6 @@
     }
     ?>
 
-    <!-- datos cliente -->
     <div class="container p-5">
         <form class="row g-3 needs-validation" action="pago.php" method="POST" novalidate>
 

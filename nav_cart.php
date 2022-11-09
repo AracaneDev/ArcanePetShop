@@ -4,7 +4,6 @@ if(isset($_SESSION['carrito'])){
 $carrito_mio=$_SESSION['carrito'];
 }
 
-// contamos nuestro carrito
 if(isset($_SESSION['carrito'])){
     for($i=0;$i<=count($carrito_mio)-1;$i ++){
         if(isset($carrito_mio[$i])){
@@ -17,12 +16,10 @@ if(isset($_SESSION['carrito'])){
     }}}
 }
 
-    //declaramos variables
      if(!isset($totalcantidad)){$totalcantidad = '';}else{ $totalcantidad = $totalcantidad;}
 
 ?>
 
-<!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg">
 <div class="container-fluid">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,4 +34,3 @@ if(isset($_SESSION['carrito'])){
     </div>
   </div>
 </nav>
-<!-- END NAVBAR -->
